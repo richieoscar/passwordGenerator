@@ -23,6 +23,9 @@ class PasswordGenerator:
     def generate_chars(self):
         listOfChars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "<", ">", "?"]
         char_res = ""
+        if self.numOfChars == 0:
+            print("Recommend special characters to increase password strength")
+            return char_res
         for a in listOfChars:
             ran = random.randint(0, len(listOfChars) - 1)
             char_res = char_res + listOfChars[ran]
@@ -31,8 +34,11 @@ class PasswordGenerator:
         return char_res
 
     def generate_numbers(self):
-        listOfNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         num_res = ""
+        if self.numOfDigits == 0:
+            print("Recommend numbers to increase password strength")
+            return num_res
+        listOfNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         for a in listOfNumbers:
             ran = random.randint(0, len(listOfNumbers) - 1)
             num_res = num_res + str(listOfNumbers[ran])
@@ -47,6 +53,5 @@ class PasswordGenerator:
         ans = f"{alphabets} {numbers} {characters}"
         split_res = ans.split(" ")
         for x in split_res:
-            split_res.reverse()
-        fin = f"{split_res[0]}{split_res[1]}{split_res[2]}"
+          fin = "".join(split_res)
         return fin
